@@ -120,7 +120,32 @@ async function vote(team) {
       /*
        * ++++ YOUR CODE HERE ++++
        */
-      window.alert(`Not implemented yet!`);
+      // Create form data for the request
+      const formData = new URLSearchParams();
+      formData.append('team', team);
+      
+      // Send POST request to the backend
+      const response = await fetch('/vote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Authorization': `Bearer ${token}`
+        },
+        body: formData
+      });
+
+      if (response.ok) {
+        // Request successful
+        const data = await response.json();
+        window.alert(`Vote submitted successfully for ${team}!`);
+        // Reload the page to show updated vote counts
+        window.location.reload();
+      } else {
+        // Request failed
+        const errorData = await response.text();
+        console.error(`Error response: ${errorData}`);
+        window.alert(`Failed to submit vote: ${response.status} ${response.statusText}`);
+      }
 
     } catch (err) {
       console.log(`Error when submitting vote: ${err}`);
