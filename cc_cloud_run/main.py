@@ -34,9 +34,9 @@ async def read_root(request: Request):
     # ====================================
     return templates.TemplateResponse("index.html", {
         "request": request,
-        "tabs_count": 0,
-        "spaces_count": 0,
-        "recent_votes": []
+        "tabs_count": tabs_count,
+        "spaces_count": spaces_count,
+        "recent_votes": vote_data 
     })
 
 
