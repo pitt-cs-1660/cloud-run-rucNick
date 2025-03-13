@@ -26,7 +26,7 @@ async def read_root(request: Request):
     votes = votes_collection.stream()
     vote_data = [v.to_dict() for v in votes]
     tabs_count = sum(1 for v in vote_data if v.get("team") == "TABS")
-    spaces_count = sum(1 for v in vote_data if v.get("team"=="SPACE"))
+    spaces_count = sum(1 for v in vote_data if v.get("team") == "SPACES")
     
 
     # ====================================

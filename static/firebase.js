@@ -125,7 +125,7 @@ async function vote(team) {
       formData.append('team', team);
       
       // Send POST request to the backend
-      const response = await fetch('/vote', {
+      const response = await fetch('/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
